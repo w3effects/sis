@@ -8,7 +8,7 @@ class DepartmentHelpers {
     {
         if(Auth::check()){
 
-            $validUsers = ['principal'];
+            $validUsers = ['principals'];
             if(in_array(Auth::user()->role, $validUsers)){
                 return true;
             }

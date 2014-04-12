@@ -19,7 +19,7 @@ class CreateHodsTable extends Migration {
 			$table->string('password');
 			$table->text('details');
             $table->integer('departments_id');
-            $table->string('role')->default('hod');
+            $table->string('role')->default('hods');
 
             $table->timestamps();
 		});
