@@ -1,17 +1,41 @@
 <?php
-
+Event::listen('illuminate.query',function($q){
+   //var_dump($q);
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	dd(Auth::guest());
 });
+
+Route::get('logout', function()
+{
+    return Redirect::to('/')->with('success_message','You Have Been Successfully Logged Out !!');
+});
+/*
+|--------------------------------------------------------------------------
+| Principal  Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('principals/login',['as'=>'principals.login','uses' => 'PrincipalsController@login']);
+Route::post('principals/login','PrincipalsController@dologin');
+
+Route::resource('principals', 'PrincipalsController');
+
+/*
+|--------------------------------------------------------------------------
+| Department  Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('departments', 'DepartmentsController');
+/*
+|--------------------------------------------------------------------------
+| Hod  Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('hods', 'HodsController');

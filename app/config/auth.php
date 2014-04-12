@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'model' => 'User',
+	'model' => Session::has('authModel') ? Session::get('authModel'): 'User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'table' => 'users',
+	'table' => Session::has('authTable') ? Session::get('authTable'): 'users',
 
 	/*
 	|--------------------------------------------------------------------------

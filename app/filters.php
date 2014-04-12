@@ -38,6 +38,7 @@ Route::filter('auth', function()
 	if (Auth::guest()) return Redirect::guest('login');
 });
 
+Route::filter('authPrincipal', 'Sis\Filters\PrincipalFilters');
 
 Route::filter('auth.basic', function()
 {
