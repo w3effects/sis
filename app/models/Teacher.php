@@ -1,6 +1,6 @@
 <?php
 
-class Teacher extends \Eloquent {
+class Teacher extends BaseUserModel {
 
 	// Add your validation rules here
 	public static $rules = [

@@ -1,6 +1,6 @@
 <?php
 
-class Semister extends \Eloquent {
+class Semister extends BaseModel {
 
 	// Add your validation rules here
 	public static $rules = [

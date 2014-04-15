@@ -18,6 +18,7 @@ class CreatePrincipalsTable extends Migration {
 			$table->string('email');
 			$table->string('password');
             $table->string('role')->default('principals');
+            $table->string('remember_token')->nullable();
 			$table->timestamps();
 		});
 	}

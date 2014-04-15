@@ -1,6 +1,6 @@
 <?php
 
-class Department extends \Eloquent {
+class Department extends BaseModel {
 
 	// Add your validation rules here
 	public static $rules = [

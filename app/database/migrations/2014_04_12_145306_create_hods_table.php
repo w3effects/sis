@@ -20,6 +20,7 @@ class CreateHodsTable extends Migration {
 			$table->text('details');
             $table->integer('departments_id');
             $table->string('role')->default('hods');
+            $table->string('remember_token')->nullable();
 
             $table->timestamps();
 		});

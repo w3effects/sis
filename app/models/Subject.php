@@ -1,6 +1,6 @@
 <?php
 
-class Subject extends \Eloquent {
+class Subject extends BaseModel {
 
 	// Add your validation rules here
 	public static $rules = [

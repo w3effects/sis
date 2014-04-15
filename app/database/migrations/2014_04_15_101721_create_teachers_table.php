@@ -20,6 +20,7 @@ class CreateTeachersTable extends Migration {
             $table->string('password');
             $table->string('role')->default('teachers');
             $table->integer('departments_id');
+            $table->string('remember_token')->nullable();
             $table->timestamps();
 		});
 	}
