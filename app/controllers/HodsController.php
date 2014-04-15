@@ -1,6 +1,21 @@
 <?php
 
+
+use Sis\Hod\HodHelpers;
+
 class HodsController extends \BaseController {
+
+    /**
+     * @var Sis\Hod\HodHelpers
+     */
+    private $helpers;
+
+    public function __construct(HodHelpers $helpers){
+
+        $this->beforeFilter('authPrincipal', array('only' => ['index','create']));
+
+        $this->helpers = $helpers;
+    }
 
 	/**
 	 * Display a listing of hods
@@ -54,6 +69,7 @@ class HodsController extends \BaseController {
 	 */
 	public function show($id)
 	{
+
 		$hod = Hod::findOrFail($id);
 
 		return View::make('hods.show', compact('hod'));
@@ -106,5 +122,36 @@ class HodsController extends \BaseController {
 
 		return Redirect::route('hods.index');
 	}
+
+    public function login(){
+        if(! $this->helpers->isHod()) return View::make('hods.login');
+
+        return Redirect::route('hods.show', ['id' => Auth::user()->id ] );
+    }
+
+    public function dologin(){
+
+        authConfig('Hod','hods');
+        $Credentials = Input::except('_token','name');
+
+        $validator = Validator::make($Credentials, ['email' => 'required|email','password'=>'required']);
+
+        if ($validator->fails())
+        {
+            return Redirect::back()
+                ->with('error_message','Please Fill out Both Fields Correctly!!')
+                ->withInput();
+        }
+
+        if(Auth::attempt($Credentials)){
+
+            return Redirect::route('hods.show', ['id' => Auth::user()->id ] )
+                ->with('success_message','You Have Successfully Logged in !!');
+        }else{
+            return Redirect::back()->withInput()
+                ->with('error_message', 'Could Not Verify Your Credentials  !! Please Try Again !!');
+        }
+    }
+
 
 }

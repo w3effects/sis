@@ -12,6 +12,7 @@ class PrincipalsController extends \BaseController {
     public function __construct(PrincipalHelpers $helper){
 
         $this->beforeFilter('authPrincipal', array('only' => ['show']));
+        $this->beforeFilter('csrf', array('only' => ['dologin']));
         $this->helper = $helper;
     }
 	/**
@@ -61,9 +62,11 @@ class PrincipalsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$principal = Principal::findOrFail($id);
 
-		return View::make('principals.show', compact('principal'));
+            $principal = Principal::findOrFail($id);
+
+            return View::make('principals.show', compact('principal'));
+
 	}
 
 	/**
@@ -74,9 +77,14 @@ class PrincipalsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$principal = Principal::find($id);
+        if($this->helper->isEditable($id)) {
+            $principal = Principal::find($id);
 
-		return View::make('principals.edit', compact('principal'));
+            return View::make('principals.edit', compact('principal'));
+        }else{
+
+            return Redirect::to('principals/login')->with('error_message','You Dont Have Permission To Edit This Page');
+        }
 	}
 
 	/**
@@ -121,16 +129,25 @@ class PrincipalsController extends \BaseController {
     }
 
     public function dologin(){
-        authConfig('Principal','principals');
 
+        authConfig('Principal','principals');
         $Credentials = Input::except('_token','name');
 
+        $validator = Validator::make($Credentials, ['email' => 'required|email','password'=>'required']);
+
+        if ($validator->fails())
+        {
+            return Redirect::back()
+                ->with('error_message','Please Fill out Both Fields Correctly!!')
+                ->withInput();
+        }
+
         if(Auth::attempt($Credentials)){
-            authSessionset();
-           return Redirect::route('principals.show', ['id' => Auth::user()->id ] )
-               ->with('success_message','You Have Succesfully Logged in !!');
+
+            return Redirect::route('principals.show', ['id' => Auth::user()->id ] )
+               ->with('success_message','You Have Successfully Logged in !!');
         }else{
-           return Redirect::back()->withInput()
+            return Redirect::back()->withInput()
                ->with('error_message', 'Could Not Verify Your Credentials  !! Please Try Again !!');
         }
     }

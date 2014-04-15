@@ -7,13 +7,10 @@
     <title>Home Page </title>
 
     <!-- Bootstrap-->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
-      {{ HTML::style('css/style.css') }}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-    <!-- Flaty Theme
-    <link href="http://bootswatch.com/flatly/bootstrap.min.css" rel="stylesheet">
--->
+      {{ HTML::style('css/style.css') }}
+      {{ HTML::style('http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css') }}
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,53 +20,17 @@
     <![endif]-->
   </head>
   <body>
-  <div class="flash_msg" style="display: none;">
-      @if(Session::has('success_message'))
-        <script> $('.flash_msg').slideDown().delay(3000).slideUp(); </script>
-        <p>{{Session::get('success_message') }} </p>
-      @endif
+    @include('partials/flash_message')
 
-      @if(Session::has('error_message'))
-      <script> $('.flash_msg').slideDown().delay(3000).slideUp(); </script>
-        <p>{{Session::get('error_message') }} </p>
-      @endif
-  </div>
-  <div class="navbar navbar-inverse navbar-static-top">
-      <div class="container">
-          <div class="navbar-header">
-              <a href="#" class="navbar-brand">Site Name </a>
-              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-          </div>
-          <div class="navbar-collapse collapse" id="navbar-main">
-              <ul class="nav navbar-nav">
-                  <li>
-                      <a href="#">Link 1</a>
-                  </li>
-                  <li>
-                      <a href="#">Link 2</a>
-                  </li>
-              </ul>
+    @include('partials/nav')
 
-              <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#" target="_blank">Link 3</a></li>
-                  <li><a href="#" target="_blank">Link 4</a></li>
-              </ul>
+    <div class="content">
+        @yield('content')
+    </div>
 
-          </div>
-      </div>
-  </div>
-<div class="content">
-  @yield('content')
-</div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-  <script>
-      $('.flash_msg').delay(3000).slideUp();
-  </script>
+    {{ HTML::script('js/jquery.js') }}
+    {{ HTML::script('js/bootstrap.js') }}
+    {{ HTML::script('js/custom.js') }}
+    @yield('extra-script')
   </body>
 </html>

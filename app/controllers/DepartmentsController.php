@@ -11,6 +11,7 @@ class DepartmentsController extends \BaseController {
 
     public function __construct(DepartmentHelpers $helpers){
 
+        $this->beforeFilter('authPrincipal', array('only' => ['index','create']));
         $this->helpers = $helpers;
     }
 	/**

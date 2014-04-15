@@ -11,7 +11,7 @@
                     <h3 class="panel-title">Please sign in</h3>
                 </div>
                 <div class="panel-body">
-                    {{ Form::open(['action'=>'PrincipalsController@login'])}}
+                    {{ Form::open(['action'=>'HodsController@login'])}}
                         <fieldset>
                                 {{ FormField::email(['placeholder' => 'E-mail' ]) }}
                                 {{ FormField::password(['placeholder' => 'Password' ]) }}

@@ -1,0 +1,1 @@
+/Users/pankaj/Sites/sis/app/views/teachers/show.blade.php

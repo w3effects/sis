@@ -13,7 +13,7 @@ class PrincipalFilters {
         }
 
         if(Auth::check()){
-            if(Auth::user()->role != "principal") return Redirect::to('principal/login')->with('error_message','You Dont Have Permission to View This page');
+            if(Auth::user()->role != "principals") return Redirect::back()->with('error_message','You Dont Have Permission to View This page');
         }
 
     }

@@ -1,13 +1,13 @@
-<?php namespace Sis\Principal;
+<?php namespace Sis\Hod;
 
 use Illuminate\Support\Facades\Auth;
 
-class PrincipalHelpers {
+class HodHelpers {
 
-    public function isPrincipal(){
+    public function isHod(){
         if(Auth::check()){
 
-            if(Auth::user()->role == 'principals') return true;
+            if(Auth::user()->role == 'hods') return true;
 
             return false;
         }
@@ -18,7 +18,7 @@ class PrincipalHelpers {
     public function isEditable($id){
 
         if(Auth::check()){
-            if(Auth::user()->role == 'principals'){
+            if(Auth::user()->role == 'hods'){
                 if($id == Auth::user()->id) return true;
             }
         }

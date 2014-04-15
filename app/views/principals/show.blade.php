@@ -12,12 +12,12 @@
 
     <ul class="nav nav-pills nav-stacked">
         <li class="nav-header"></li>
-        <li><a href="#"><i class="glyphicon glyphicon-list"></i> Layouts &amp; Templates</a></li>
-        <li><a href="{{ URL::route('departments.index') }}"><i class="glyphicon glyphicon-briefcase"></i> View Departments</a></li>
-        <li><a href="{{ URL::route('hods.index') }}"><i class="glyphicon glyphicon-link"></i> View HOD's</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-book"></i> Pages</a></li>
-        <li><a href="#"><i class="glyphicon glyphicon-star"></i> Social Media</a></li>
+        <li><a href="#"><i class="fa fa-list"></i> Layouts &amp; Templates</a></li>
+        <li><a href="{{ URL::route('departments.index') }}"><i class="fa fa-briefcase"></i> View Departments</a></li>
+        <li><a href="{{ URL::route('hods.index') }}"><i class="fa fa-link"></i> View HOD's</a></li>
+        <li><a href="#"><i class="fa fa-list-alt"></i> Reports</a></li>
+        <li><a href="#"><i class="fa fa-book"></i> Pages</a></li>
+        <li><a href="#"><i class="fa fa-star"></i> Social Media</a></li>
     </ul>
 
     <hr>
@@ -38,12 +38,12 @@
 
 <!-- column 2 -->
 <ul class="list-inline pull-right">
-    <li><a href="#"><i class="glyphicon glyphicon-cog"></i></a></li>
-    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
-    <li><a href="#"><i class="glyphicon glyphicon-user"></i>Welcome {{ Auth::user()->name}}</a></li>
-    <li><a title="Add Widget"  href="#addWidgetModal"><span class="glyphicon glyphicon-plus-sign"></span></a></li>
+    <li><a href="#"><i class="fa fa-cog"></i></a></li>
+    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-comment"></i><span class="count">3</span></a><ul class="dropdown-menu" role="menu"><li><a href="#">1. Is there a way..</a></li><li><a href="#">2. Hello, admin. I would..</a></li><li><a href="#"><strong>All messages</strong></a></li></ul></li>
+    <li><a href="#"><i class="fa fa-user"></i>Welcome {{ Auth::user()->name}}</a></li>
+    <li><a  href="{{ URL::to('logout') }}"><span class="fa fa-sign-out"></span>Logout</a></li>
 </ul>
-<a href="#"><strong><i class="glyphicon glyphicon-dashboard"></i> My Dashboard</strong></a>
+<a href="#"><strong><i class="fa fa-dashboard"></i> My Dashboard</strong></a>
 
 <hr>
 
@@ -64,19 +64,19 @@
 
         <div class="btn-group btn-group-justified">
             <a href="#" class="btn btn-primary col-sm-3">
-                <i class="glyphicon glyphicon-plus"></i><br>
+                <i class="fa fa-plus"></i><br>
                 Service
             </a>
             <a href="#" class="btn btn-primary col-sm-3">
-                <i class="glyphicon glyphicon-cloud"></i><br>
+                <i class="fa fa-cloud"></i><br>
                 Cloud
             </a>
             <a href="#" class="btn btn-primary col-sm-3">
-                <i class="glyphicon glyphicon-cog"></i><br>
+                <i class="fa fa-cog"></i><br>
                 Tools
             </a>
             <a href="#" class="btn btn-primary col-sm-3">
-                <i class="glyphicon glyphicon-question-sign"></i><br>
+                <i class="fa fa-question-sign"></i><br>
                 Help
             </a>
         </div>
@@ -128,18 +128,18 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="profile">
-                        <h4><i class="glyphicon glyphicon-user"></i></h4>
+                        <h4><i class="fa fa-user"></i></h4>
                         Lorem profile dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
                         <p>Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis
                             dolor, in sagittis nisi.</p>
                     </div>
                     <div class="tab-pane" id="messages">
-                        <h4><i class="glyphicon glyphicon-comment"></i></h4>
+                        <h4><i class="fa fa-comment"></i></h4>
                         Message ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
                         <p>Quisque mauris augu.</p>
                     </div>
                     <div class="tab-pane" id="settings">
-                        <h4><i class="glyphicon glyphicon-cog"></i></h4>
+                        <h4><i class="fa fa-cog"></i></h4>
                         Lorem settings dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate.
                         <p>Quisque mauris augue, molestie.</p>
                     </div>
@@ -195,7 +195,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="panel-title">
-                    <i class="glyphicon glyphicon-wrench pull-right"></i>
+                    <i class="fa fa-wrench pull-right"></i>
                     <h4>Post Request</h4>
                 </div>
             </div>
@@ -253,19 +253,19 @@
 
 <hr>
 
-<a href="#"><strong><i class="glyphicon glyphicon-comment"></i> Discussions</strong></a>
+<a href="#"><strong><i class="fa fa-comment"></i> Discussions</strong></a>
 
 <hr>
 
 <div class="row">
     <div class="col-md-12">
         <ul class="list-group">
-            <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-flash"></i> <small>(3 mins ago)</small> The 3rd page reports don't contain any links. Does anyone know why..</a></li>
-            <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-flash"></i> <small>(1 hour ago)</small> Hi all, I've just post a report that show the relationship betwe..</a></li>
-            <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-heart"></i> <small>(2 hrs ago)</small> Paul. That document you posted yesterday doesn't seem to contain the over..</a></li>
-            <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-heart-empty"></i> <small>(4 hrs ago)</small> The map service on c243 is down today. I will be fixing the..</a></li>
-            <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-heart"></i> <small>(yesterday)</small> I posted a new document that shows how to install the services layer..</a></li>
-            <li class="list-group-item"><a href="#"><i class="glyphicon glyphicon-flash"></i> <small>(yesterday)</small> ..</a></li>
+            <li class="list-group-item"><a href="#"><i class="fa fa-flash"></i> <small>(3 mins ago)</small> The 3rd page reports don't contain any links. Does anyone know why..</a></li>
+            <li class="list-group-item"><a href="#"><i class="fa fa-flash"></i> <small>(1 hour ago)</small> Hi all, I've just post a report that show the relationship betwe..</a></li>
+            <li class="list-group-item"><a href="#"><i class="fa fa-heart"></i> <small>(2 hrs ago)</small> Paul. That document you posted yesterday doesn't seem to contain the over..</a></li>
+            <li class="list-group-item"><a href="#"><i class="fa fa-heart-empty"></i> <small>(4 hrs ago)</small> The map service on c243 is down today. I will be fixing the..</a></li>
+            <li class="list-group-item"><a href="#"><i class="fa fa-heart"></i> <small>(yesterday)</small> I posted a new document that shows how to install the services layer..</a></li>
+            <li class="list-group-item"><a href="#"><i class="fa fa-flash"></i> <small>(yesterday)</small> ..</a></li>
         </ul>
     </div>
 </div>
@@ -273,10 +273,6 @@
 </div>
 </div>
 <!-- /Main -->
-
-<footer class="text-center">
-    This Bootstrap 3 dashboard layout is compliments of <a href="http://www.bootply.com/85850"><strong>Bootply.com</strong></a>
-</footer>
 
 
 

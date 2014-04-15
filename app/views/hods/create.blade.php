@@ -11,9 +11,7 @@
                 <h4>Create New HOD</h4>
             </div>
         </div>
-        @foreach($errors->all('<li class="error">:message</li>') as $message)
-        {{ $message }}
-        @endforeach
+        @include('partials/errors')
         <div class="panel-body">
             {{ Form::open(['route' => 'hods.store']) }}
             {{ FormField::name(['label'=>'Hod Name']) }}
