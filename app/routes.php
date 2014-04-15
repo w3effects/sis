@@ -9,9 +9,12 @@
 
 Route::get('/', function()
 {
-	dd(homeUrl());
+	return View::make('index');
 });
-
+Route::get('/login', function()
+{
+    return View::make('index_login');
+});
 Route::get('logout', function()
 {
     Auth::logout();

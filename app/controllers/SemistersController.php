@@ -47,7 +47,7 @@ class SemistersController extends \BaseController {
         $data['end_date'] = sqldate(Input::get('end_date'));
 		Semister::create($data);
 
-		return Redirect::route('semisters.index');
+		return Redirect::to(homeUrl())->with('success_message','Semister Added Successfully ');
 	}
 
 	/**
@@ -59,7 +59,6 @@ class SemistersController extends \BaseController {
 	public function show($id)
 	{
 		$semister = Semister::findOrFail($id);
-
 		return View::make('semisters.show', compact('semister'));
 	}
 

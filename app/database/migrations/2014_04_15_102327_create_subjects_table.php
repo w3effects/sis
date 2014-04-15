@@ -16,6 +16,10 @@ class CreateSubjectsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->string('details');
+            $table->integer('max_marks')->default(100);
+            $table->integer('min_marks')->default(35);
+            $table->integer('teachers_id');
+            $table->integer('semisters_id');
 			$table->timestamps();
 		});
 	}

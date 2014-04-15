@@ -37,3 +37,23 @@ body{
     color: red;
     font-style: italic;
 }
+
+.homelogin{ margin-top: 35%;}
+.homebanner{
+    background: rgb(0, 114, 198);
+    height: 100vh;
+}
+.homecontent{
+    color: #fff;
+    padding: 10px;
+    border-right: 2px solid #fff;
+    height: 100vh;
+    margin-top: 25px;
+}
+
+.loginindexcontent{
+    color: #fff;
+    padding: 10px;
+    margin-top: 30%;
+    text-align: center;
+}

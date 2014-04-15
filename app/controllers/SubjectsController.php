@@ -21,7 +21,9 @@ class SubjectsController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('subjects.create');
+        $semisters = Semister::lists('name','id');
+        $teachers = Teacher::lists('name','id');
+		return View::make('subjects.create',compact('semisters', 'teachers'));
 	}
 
 	/**
@@ -31,14 +33,14 @@ class SubjectsController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Subject::$rules);
+		$validator = Validator::make($data = Input::all(), Subject::$rules, Subject::$messages);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Subject::create($data);
+        Subject::create($data);
 
 		return Redirect::route('subjects.index');
 	}
