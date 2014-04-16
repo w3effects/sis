@@ -1,8 +1,22 @@
 <?php
 
+use Sis\Teachers\TeacherHelpers;
+
 class TeachersController extends \BaseController {
 
-	/**
+
+    /**
+     * @var Sis\Teachers\TeachersHelpers
+     */
+    private $helpers;
+
+    function __construct(TeacherHelpers $helpers)
+    {
+        $this->helpers = $helpers;
+    }
+
+
+    /**
 	 * Display a listing of teachers
 	 *
 	 * @return Response
@@ -40,7 +54,7 @@ class TeachersController extends \BaseController {
 
 		Teacher::create($data);
 
-		return Redirect::route('teachers.index');
+		return Redirect::to(homeUrl())->with('success_message','Teacher Added Successfully ');
 	}
 
 	/**
@@ -103,5 +117,35 @@ class TeachersController extends \BaseController {
 
 		return Redirect::route('teachers.index');
 	}
+
+    public function login(){
+        if(! $this->helpers->isTeacher()) return View::make('teachers.login');
+
+        return Redirect::route('teachers.show', ['id' => Auth::user()->id ] );
+    }
+
+    public function dologin(){
+
+        authConfig('Teacher','teachers');
+        $Credentials = Input::except('_token','name');
+
+        $validator = Validator::make($Credentials, ['email' => 'required|email','password'=>'required']);
+
+        if ($validator->fails())
+        {
+            return Redirect::back()
+                ->with('error_message','Please Fill out Both Fields Correctly!!')
+                ->withInput();
+        }
+
+        if(Auth::attempt($Credentials)){
+
+            return Redirect::route('teachers.show', ['id' => Auth::user()->id ] )
+                ->with('success_message','You Have Successfully Logged in !!');
+        }else{
+            return Redirect::back()->withInput()
+                ->with('error_message', 'Could Not Verify Your Credentials  !! Please Try Again !!');
+        }
+    }
 
 }

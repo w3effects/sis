@@ -19,4 +19,17 @@ class Subject extends BaseModel {
 	// Don't forget to fill this array
 	protected $fillable = ['name','details','max_marks','min_marks','teachers_id','semisters_id'];
 
+    /*
+    |--------------------------------------------------------------------------
+    | Relationship Methods
+    |--------------------------------------------------------------------------
+    */
+
+    public function teacher()
+    {
+        return $this->belongsTo('Teacher','teachers_id');
+    }
+
+
+
 }

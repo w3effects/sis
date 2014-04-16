@@ -39,6 +39,7 @@
 	},
 	"minimum-stability": "stable",
 	"require-dev": {
-		"fzaninotto/faker": "dev-master"
+		"fzaninotto/faker": "dev-master",
+		"itsgoingd/clockwork": "1.*"
 	}
 }

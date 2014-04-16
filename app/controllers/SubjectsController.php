@@ -42,7 +42,7 @@ class SubjectsController extends \BaseController {
 
         Subject::create($data);
 
-		return Redirect::route('subjects.index');
+		return Redirect::to(homeUrl())->with('success_message','Subject Added Successfully ');
 	}
 
 	/**

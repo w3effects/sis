@@ -18,6 +18,8 @@ function authSessionDestroy(){
     Session::forget('authModel');
     Session::forget('authTable');
 }
+
+
 Event::listen('auth.login',function($q){
     authSessionset();
 });

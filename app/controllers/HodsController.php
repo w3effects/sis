@@ -70,9 +70,15 @@ class HodsController extends \BaseController {
 	public function show($id)
 	{
 
-		$hod = Hod::findOrFail($id);
+        if($this->helpers->isHod()){
+            $hod = Hod::findOrFail($id);
 
-		return View::make('hods.show', compact('hod'));
+            return View::make('hods.show', compact('hod'));
+        }else{
+
+            return Redirect::to('hods/login')
+                ->with('error_message','Login to view this page !!');
+        }
 	}
 
 	/**
@@ -83,9 +89,15 @@ class HodsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$hod = Hod::find($id);
 
-		return View::make('hods.edit', compact('hod'));
+        if($this->helpers->isEditable($id)){
+            $hod = Hod::find($id);
+
+            return View::make('hods.edit', compact('hod'));
+        }else{
+
+            return Redirect::to(homeUrl())->with('error_message','You don\'t have permission to edit that page');
+        }
 	}
 
 	/**

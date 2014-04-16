@@ -1,12 +1,5 @@
 <?php
 
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-*/
-
 Route::get('/', function()
 {
 	return View::make('index');
@@ -29,14 +22,14 @@ Route::get('logout', function()
 Route::get('principals/login',['as'=>'principals.login','uses' => 'PrincipalsController@login']);
 Route::post('principals/login','PrincipalsController@dologin');
 
-Route::resource('principals', 'PrincipalsController');
+Route::resource('principals', 'PrincipalsController',['only' => ['index','show']]);
 
 /*
 |--------------------------------------------------------------------------
 | Department  Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('departments', 'DepartmentsController');
+Route::resource('departments', 'DepartmentsController',['except' => ['show']]);
 /*
 |--------------------------------------------------------------------------
 | Hod  Routes
@@ -51,7 +44,10 @@ Route::resource('hods', 'HodsController');
 | Teacher  Routes
 |--------------------------------------------------------------------------
 */
+Route::get('teachers/login',['as'=>'teachers.login','uses' => 'TeachersController@login']);
+Route::post('teachers/login','TeachersController@dologin');
 Route::resource('teachers', 'TeachersController');
+
 /*
 |--------------------------------------------------------------------------
 | Subject  Routes
